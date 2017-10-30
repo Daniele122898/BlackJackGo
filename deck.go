@@ -25,6 +25,9 @@ func newDeck() deck {
 
 	for _, suit := range cardSuits {
 		for i, value := range cardValues {
+			if i > 9 {
+				i = 9
+			}
 			aC := card {name: value + " of " +suit, value: i+1}
 			cards = append(cards, aC)
 		}
@@ -77,8 +80,15 @@ func (d deck) names() string{
 
 func (d deck) value() int{
 	v := 0
+	ace := false
 	for _, card := range d{
 		v += card.value
+		if card.value == 1{
+			ace = true
+		}
+	}
+	if ace && v <= 11{
+		v += 10
 	}
 	return v
 }

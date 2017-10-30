@@ -11,6 +11,7 @@ import (
 func main() {
 	fmt.Println("Started new Game\n")
 	cards := newDeck()
+	//cards.print()
 	cards.shuffle()
 	h, d := deal(cards, 2)
 	if h.value() > 21{
@@ -38,8 +39,8 @@ func gameLoop(d deck, h deck){
 		s = strings.Trim(s, "\n\r")
 		i, err := strconv.Atoi(s)
 		if err != nil {
-			fmt.Println("Please enter an integer")
 			fmt.Println("Error: ",err)
+			fmt.Println("Please enter an integer")
 			continue
 		}
 		switch i {
